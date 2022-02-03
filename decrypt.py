@@ -4,7 +4,7 @@ from Crypto.Cipher import PKCS1_OAEP
 
 if __name__ == "__main__":
     print("Here is your decryption key.")
-    private_key = RSA.import_key(open("private.pem").read())
+    private_key = RSA.import_key(open("evil_private.pem").read())
     cipher_rsa = PKCS1_OAEP.new(private_key)
     with open("aes_key.txt", "rb") as file:
         content = file.read()

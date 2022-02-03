@@ -1,6 +1,6 @@
 # Pysomware
 
-This is a ransomware written in Python.
+This is a ransomware written in Python. It only works for Windows
 
 ## How this ransomware works
 #### generatekey.py
@@ -24,5 +24,5 @@ Bitcoin address comes from here (https://bitflyer.com/en-jp/s/glossary/address)<
 Do NOT send bitcoin to this address.
 
 ## Before you try
-
-I made this ransomware to learn how ransomwares work. So this ransomware is not evil and awesome compared to real ransomwares in the wild.<br />
+I made this ransomware to learn how ransomwares work. So this ransomware may not be evil and great compared to real ransomwares in the wild.<br />
+I left some functions uncommented or undeleted because of debugging purpose. You can uncomment or delete them for sure.
