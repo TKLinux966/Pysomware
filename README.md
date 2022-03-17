@@ -1,6 +1,6 @@
 # Pysomware
 
-This is a ransomware written in Python. It only works for Windows
+This is a ransomware written in Python. It only works for Windows.
 
 ## How this ransomware works
 #### generatekey.py
