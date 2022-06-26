@@ -2,6 +2,11 @@
 
 This is a ransomware written in Python. It only works for Windows.
 
+### Disclaimer
+This is for educational purposes only. I'm not responsible for any trouble you cause with this malware.<br />
+Bitcoin address comes from here (https://bitflyer.com/en-jp/s/glossary/address)<br />
+Do NOT send bitcoin to this address.
+
 ## How this ransomware works
 #### generatekey.py
 ```
@@ -17,11 +22,6 @@ This script is used for your target person(a victim) to get a decryption key for
 ```
 This script is for encrypting all files on your target machine.
 ```
-
-### Disclaimer
-This is for educational purposes only. I'm not responsible for any trouble you cause with this malware.<br />
-Bitcoin address comes from here (https://bitflyer.com/en-jp/s/glossary/address)<br />
-Do NOT send bitcoin to this address.
 
 ## Before you try
 I made this ransomware to learn how ransomwares work. So this ransomware may not be evil and great compared to real ransomwares in the wild.<br />
